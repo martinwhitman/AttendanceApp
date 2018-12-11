@@ -15,7 +15,7 @@ Class Date: <input type="text" name="sessionDate">
 Course ID: <input type="text" name="courseID">
 Student ID: <input type="text" name="studentID">
 Present:<input type="checkbox" name="present">
-<input type="submit" value = "Student was Present" class="button button1">
+<input type="submit" value = "Take Student Attendance" class="button button1">
 
 
 

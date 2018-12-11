@@ -26,19 +26,20 @@ public class viewAttendanceByStudentAndCourseServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int studentID = Integer.parseInt(request.getParameter("studentID"));
+		int courseID = Integer.parseInt(request.getParameter("courseID"));
+		SessionAttendanceHelper dao = new SessionAttendanceHelper();
+		
+		request.setAttribute("attendance", dao.getAttendanceByStudentAndCourse(studentID, courseID));
+		
+		getServletContext().getRequestDispatcher("/viewAttendanceByStudentAndCourseResult.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int studentID = Integer.parseInt(request.getParameter("studentID"));
-		int courseID = Integer.parseInt(request.getParameter("courseID"));
-		SessionAttendanceHelper dao = new SessionAttendanceHelper();
-		request.setAttribute("attendance", dao.getAttendanceByStudentAndCourse(studentID, courseID));
-		getServletContext().getRequestDispatcher("/viewAttendanceByStudentAndCourseResult.jsp").forward(request, response);
+		
 		
 	}
 

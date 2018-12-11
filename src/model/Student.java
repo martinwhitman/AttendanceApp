@@ -15,6 +15,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * @author martin whitman
+ *	class definition and annotation
+ */
 @Entity
 @Table(name = "student")
 public class Student {
@@ -32,7 +36,6 @@ public class Student {
 	@JoinTable(name = "student_course", joinColumns = @JoinColumn(name = "studentID", referencedColumnName = "studentID"), inverseJoinColumns = @JoinColumn(name = "courseID", referencedColumnName = "courseID"))
 	private List<Course> courses;
 
-	
 
 	/**
 	 * no arg constructor
@@ -48,6 +51,8 @@ public class Student {
 		this.name = name;
 		this.dob = dob;
 	}
+	
+	//getters and setters
 	public List<SessionAttendance> getSessionAttendance() {
 		return sessionAttendance;
 	}

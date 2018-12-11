@@ -10,7 +10,7 @@
 <link href="style.css" rel="stylesheet">
 </head>
 <body><div class="hero-image"><div class="hero-text">
-<form action ="viewAttendanceByCourseServlet" method="post">
+<form action ="viewAttendanceByCourseServlet" method="get">
 Course ID: <input type="text" name="courseID">
 <input type="submit" value="View Attendance By Course" class="button button1">
 </form>

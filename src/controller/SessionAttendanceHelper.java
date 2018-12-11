@@ -26,8 +26,11 @@ public class SessionAttendanceHelper {
 		em.getTransaction().begin();
 		TypedQuery<SessionAttendance> typedQuery = em.createQuery("select a from SessionAttendance a where a.student.studentID = :selectedStudent",SessionAttendance.class);
 		typedQuery.setParameter("selectedStudent",studentID);
+		typedQuery.setHint("javax.persistence.cache.storeMode", "BYPASS");
 		List<SessionAttendance> foundList= typedQuery.getResultList();
+		
 		em.close();
+		
 		return foundList;
 		
 	}
@@ -37,7 +40,9 @@ public class SessionAttendanceHelper {
 		em.getTransaction().begin();
 		TypedQuery<SessionAttendance> typedQuery = em.createQuery("select a from SessionAttendance a where a.course.courseID = :selectedCourse",SessionAttendance.class);
 		typedQuery.setParameter("selectedCourse",courseID);
+		typedQuery.setHint("javax.persistence.cache.storeMode", "BYPASS");
 		List<SessionAttendance> foundList = typedQuery.getResultList();
+		
 		em.close();
 		return foundList;
 	}
@@ -48,7 +53,9 @@ public class SessionAttendanceHelper {
 		TypedQuery<SessionAttendance> typedQuery = em.createQuery("select a from SessionAttendance a where a.course.courseID= :selectedCourse and a.student.studentID = :selectedStudent", SessionAttendance.class);
 		typedQuery.setParameter("selectedCourse",courseID);
 		typedQuery.setParameter("selectedStudent", studentID);
+		typedQuery.setHint("javax.persistence.cache.storeMode", "BYPASS");
 		List<SessionAttendance> foundAttendance = typedQuery.getResultList();
+		
 		em.close();
 		return foundAttendance;
 	}

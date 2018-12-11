@@ -23,6 +23,7 @@ public class StudentHelper {
 	public List<Student> showAllStudents(){
 		EntityManager em = emfactory.createEntityManager();
 		TypedQuery<Student> typedQuery = em.createQuery("select s from Student s", Student.class);
+		typedQuery.setHint("javax.persistence.cache.storeMode", "BYPASS");
 		List<Student> allStudents = typedQuery.getResultList();
 		em.close();
 		return allStudents;
@@ -32,7 +33,9 @@ public class StudentHelper {
 		EntityManager em = emfactory.createEntityManager();
 		TypedQuery<Student> typedQuery = em.createQuery("select distinct s from Course c LEFT JOIN c.students s where c.courseID= :courseID", Student.class);
 		typedQuery.setParameter("courseID",courseID);
+		typedQuery.setHint("javax.persistence.cache.storeMode", "BYPASS");
 		List<Student> foundStudents = typedQuery.getResultList();
+		
 		em.close();
 		return foundStudents;
 	}

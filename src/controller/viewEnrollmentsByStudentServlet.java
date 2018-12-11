@@ -26,18 +26,19 @@ public class viewEnrollmentsByStudentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int id = Integer.parseInt(request.getParameter("studentID"));
+		CourseHelper dao = new CourseHelper();
+		
+		request.setAttribute("enrollments", dao.showEnrollmentsByStudent(id));
+		
+		getServletContext().getRequestDispatcher("/viewEnrollmentsByStudentResult.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("studentID"));
-		CourseHelper dao = new CourseHelper();
-		request.setAttribute("enrollments", dao.showEnrollmentsByStudent(id));
-		getServletContext().getRequestDispatcher("/viewEnrollmentsByStudentResult.jsp").forward(request, response);
+		
 	}
 
 }

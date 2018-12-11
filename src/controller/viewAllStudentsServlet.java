@@ -27,11 +27,13 @@ public class viewAllStudentsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudentHelper dao = new StudentHelper();
+		
 		request.setAttribute("allStudents", dao.showAllStudents());
 		
 		if(dao.showAllStudents().isEmpty()) {
 			request.setAttribute("allStudents", " ");
 		}
+		
 		getServletContext().getRequestDispatcher("/viewStudents.jsp").forward(request, response);
 	}
 

@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+/**
+ * @author martin whitman
+ * class definition and annotation
+ */
 @Entity
 @Table(name="session")
 public class SessionAttendance {
@@ -47,7 +51,7 @@ public class SessionAttendance {
 	}
 
 
-
+	//getters and setters
 	public Date getSessionDate() {
 		return sessionDate;
 	}
@@ -60,12 +64,9 @@ public class SessionAttendance {
 	}
 
 
-
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-
-
 
 	
 	public Student getStudent() {
@@ -73,11 +74,9 @@ public class SessionAttendance {
 	}
 
 
-
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-
 
 
 	public boolean isPresent() {
@@ -88,14 +87,11 @@ public class SessionAttendance {
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "SessionAttendance [sessionDate=" + sessionDate + ", course=" + course + ", student=" + student
 				+ ", present=" + present + "]";
 	}
-
-
 
 	
 }

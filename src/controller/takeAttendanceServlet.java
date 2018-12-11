@@ -73,6 +73,7 @@ public class takeAttendanceServlet extends HttpServlet {
 			SessionAttendanceHelper dao = new SessionAttendanceHelper();
 			SessionAttendance session = new SessionAttendance(sessionDate, resultC, resultS, present);
 			dao.insertSession(session);
+			
 			getServletContext().getRequestDispatcher("/attendance.jsp").forward(request, response);
 		}
 		 catch (ParseException e) {

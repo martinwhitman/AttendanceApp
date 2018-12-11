@@ -33,6 +33,7 @@ public class viewAllCoursesServlet extends HttpServlet {
 		if(dao.showAllCourses().isEmpty()) {
 			request.setAttribute("allCourses", " ");	
 		}
+		
 		getServletContext().getRequestDispatcher("/viewCourses.jsp").forward(request, response);
 	}
 

@@ -13,6 +13,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * @author martin whitman
+ * Model/Entity Class Course corresponding to table name course, fields of courseID, instructor, session attendance, room
+ */
 @Entity
 @Table(name="course")
 public class Course {
@@ -35,8 +39,7 @@ public class Course {
 	 */
 	public Course() {
 	}
-	
-	
+		
 	
 	/**
 	 * @param instructor
@@ -46,9 +49,7 @@ public class Course {
 		this.instructor = instructor;
 		this.room = room;
 	}
-
-
-
+	//getters and setters and toString()
 	public int getCourseID() {
 		return courseID;
 	}
@@ -68,19 +69,14 @@ public class Course {
 		this.room = room;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Course [courseID=" + courseID + ", instructor=" + instructor + ", room=" + room + "]";
 	}
 
-
-
 	public List<SessionAttendance> getSessionAttendance() {
 		return sessionAttendance;
 	}
-
 
 
 	public void setSessionAttendance(List<SessionAttendance> sessionAttendance) {
@@ -88,11 +84,9 @@ public class Course {
 	}
 
 
-
 	public List<Student> getStudents() {
 		return students;
 	}
-
 
 
 	public void setStudents(List<Student> students) {

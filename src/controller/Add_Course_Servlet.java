@@ -43,6 +43,7 @@ public class Add_Course_Servlet extends HttpServlet {
 		Course course = new Course(instructor,room);
 		CourseHelper dao = new CourseHelper();
 		dao.insertCourse(course);
+		
 		getServletContext().getRequestDispatcher("/addCourse.jsp").forward(request, response);
 		
 	}
