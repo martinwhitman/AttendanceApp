@@ -10,6 +10,11 @@ import javax.persistence.TypedQuery;
 
 import model.Student;
 
+/**
+ * @author martin whitman
+ * student helper data access object class for executing persistence/queries on student entities
+ *
+ */
 public class StudentHelper {
 	static	EntityManagerFactory emfactory=Persistence.createEntityManagerFactory("AttendanceApp");
 	public void insertStudent(Student s) {
@@ -20,6 +25,9 @@ public class StudentHelper {
 		em.close();
 	}
 	
+	/**
+	 * @return all students
+	 */
 	public List<Student> showAllStudents(){
 		EntityManager em = emfactory.createEntityManager();
 		TypedQuery<Student> typedQuery = em.createQuery("select s from Student s", Student.class);
@@ -29,6 +37,10 @@ public class StudentHelper {
 		return allStudents;
 	}
 	
+	/**
+	 * @param courseID
+	 * @return enrollments by course
+	 */
 	public List<Student> showEnrollmentsByCourse(int courseID){
 		EntityManager em = emfactory.createEntityManager();
 		TypedQuery<Student> typedQuery = em.createQuery("select distinct s from Course c LEFT JOIN c.students s where c.courseID= :courseID", Student.class);

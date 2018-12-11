@@ -10,6 +10,11 @@ import javax.persistence.TypedQuery;
 import model.Course;
 
 
+/**
+ * @author martin whitman
+ * course helper dao class for persistence on course entities
+ *
+ */
 public class CourseHelper {
 	static	EntityManagerFactory emfactory=Persistence.createEntityManagerFactory("AttendanceApp");
 	public void insertCourse(Course c) {
@@ -20,6 +25,9 @@ public class CourseHelper {
 		em.close();
 	}
 	
+	/**
+	 * @return all courses
+	 */
 	public List<Course> showAllCourses(){
 		EntityManager em = emfactory.createEntityManager();
 		TypedQuery<Course> typedQuery = em.createQuery("select c from Course c", Course.class);
@@ -29,6 +37,10 @@ public class CourseHelper {
 		return allCourses;
 	}
 	
+	/**
+	 * @param studentID
+	 * @return enrollments by student
+	 */
 	public List<Course> showEnrollmentsByStudent(int studentID){
 		EntityManager em = emfactory.createEntityManager();
 		TypedQuery<Course> typedQuery = em.createQuery("select distinct c from Student s LEFT JOIN s.courses c where s.studentID= :studentID", Course.class);
